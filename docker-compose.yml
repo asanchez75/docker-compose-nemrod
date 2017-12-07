@@ -1,0 +1,26 @@
+version: '3'
+services:
+    web:
+        #image: asanchez75/symfony:nodejs
+        build: .
+        volumes:
+            - "./html:/var/www/html"
+        ports:
+            - "89:80"
+            - "8009:8009"
+        restart: always
+        privileged: true
+        #command: bash -c '/sbin/httpd -k start'
+        depends_on:
+            - blazegraph
+    blazegraph:
+        image: lyrasis/blazegraph:2.1.4
+        restart: always
+        ports:
+            - "9999:8080"
+    elasticsearch:
+        image: docker.elastic.co/elasticsearch/elasticsearch:6.0.1
+        restart: always
+        ports:
+            - "9200:9200"
+            - "9300:9300"
