@@ -1,4 +1,4 @@
-FROM asanchez75/php5.6-symfony:latest
+FROM asanchez75/symfony:php5.6
 RUN mkdir /data && \
     cd /data && \
     git clone http://github.com/conjecto/nemrod-demo web && \
